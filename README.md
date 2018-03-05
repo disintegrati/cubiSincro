@@ -1,4 +1,5 @@
-# Cubi Sincronizzati
+# Cubi Sincronizzati (yea)
+
 
 In realtà non è sincronizzatissimo ma prende il segnale dallo stesso webserver in nodeJs
 Usa qualche modulo tipo esp8266 o nodcmu
