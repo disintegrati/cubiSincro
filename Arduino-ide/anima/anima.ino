@@ -107,8 +107,10 @@ void setup() {
 
   // event handler
   webSocket.onEvent(webSocketEvent);
-  webSocket.begin(host, port, "/ws");
-  webSocket.setReconnectInterval(500);
+//  webSocket.begin(host, port, "/ws");
+  
+  webSocket.begin(host, port);
+webSocket.setReconnectInterval(500);
 }
 
 

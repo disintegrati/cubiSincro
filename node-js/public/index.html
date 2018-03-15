@@ -1,17 +1,128 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Anima WebServer</title>
-   </head>
-<script src = "/socket.io/socket.io.js"></script>
+
+
+   <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+
+
 <script>
-var socket = io();
-/*
-//socket.on('broadcast', function() {console.log("received"); socket.emit("ricevo") } );
-socket.on('broadcast', function() {socket.emit("ricevo"); } );
-*/
-</script>
-   <body style="background-color: #D32F2F; padding: 0; margin: 0;">
-<h1 style="color: #ffffff; text-align: center;">Anima WebServer</h1>
+//    var socket = io.connect('https://ininfluent.herokuapp.com/ws/');
+//    socket.on('request', beat);
+
+var HOST = location.origin.replace(/^http/, 'ws');
+
+
+
+var ws = new WebSocket(HOST);
+
+
+ws.onmessage = function (event) {
+beat();
+};
+
+
+    function beat() {
+      console.log("batto");
+      element = document.getElementById("cover");
+      element.classList.remove("beat");
+      element.offsetWidth = element.offsetWidth;
+      element.classList.add("beat");
+    };
+  </script>
+  <style type="text/css">
+
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
+
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      background: #000;
+    }
+    #cover {
+      width: 100%;
+      height: 100%;
+      background-color: #ed1f24;
+      opacity: 0;
+    }
+    .beat{
+        -webkit-animation: heartbeat 2000ms ease-in-out 0s  normal;
+        -khtml-animation: heartbeat 2000s ease-in-out 0s  normal;
+        -moz-animation: heartbeat 2000ms ease-in-out 0s  normal;
+        -ms-animation: heartbeat 2000ms ease-in-out 0s  normal;
+        -o-animation: heartbeat 2000ms ease-in-out 0s  normal;
+        animation: heartbeat 2000ms ease-in-out 0s  normal;
+      }
+    @-webkit-keyframes heartbeat {
+      7.46% {
+      opacity: 1;
+      }
+      14.17% {
+    opacity:0;
+      }
+      25.36% {
+    opacity:1;
+      }
+      100% {
+     opacity:0;
+      }
+    }
+@-moz-keyframes heartbeat {
+7.46% {
+      opacity: 1;
+      }
+      14.17% {
+    opacity:0;
+      }
+      25.36% {
+    opacity:1;
+      }
+      100% {
+     opacity:0;
+      }
+}
+@-o-keyframes heartbeat {
+  7.46% {
+      opacity: 1;
+      }
+      14.17% {
+    opacity:0;
+      }
+      25.36% {
+    opacity:1;
+      }
+      100% {
+     opacity:0;
+      }
+}
+@keyframes heartbeat {
+  7.46% {
+      opacity: 1;
+      }
+      14.17% {
+    opacity:0;
+      }
+      25.36% {
+    opacity:1;
+      }
+      100% {
+     opacity:0;
+      }
+}
+  </style>
+  <title>Battito</title>
+</head>
+
+<body>
+  <div id="cover">
+  </div>
 </body>
+
 </html>

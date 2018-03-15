@@ -8,8 +8,9 @@ const app = express();
 
 //initialize a simple http server
 const server = http.createServer(app);
-
-const wss = new ws.Server({ server, path: "/ws" });
+const wss = new ws.Server({ server });
+//const wss = new ws.Server({ server, path: "/ws" });
+//const wss = new SocketServer({ server });
 
 wss.broadcast = function broadcast(data) {
   wss.clients.forEach(function each(client) {
@@ -33,7 +34,7 @@ wss.on('connection', (ws) => {
   ws.on('close', () => console.log('Client disconnected'));
 });
 
-setInterval(function(){ wss.broadcast('request'); }, 1783 * 10);
+setInterval(function(){ wss.broadcast('request'); }, 1783 * 2);
 //setInterval(function(){ wss.broadcast('request'); }, 30000);
 
 server.listen(PORT, () => console.log(`Listening on ${PORT}`));
